@@ -14,5 +14,4 @@ public interface APIService {
 
     @GET("api/Exhibition/ListMulti?types=99,1,11,12,13")
     Observable<Museum> loadMuseumList(@Query("lang") int lang, @Query("museumId") String museumId);
-
 }

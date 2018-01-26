@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HttpConnect {
 
     // --------------------------------------------------------
-    private final int _TIME_OUT = 5;
+    private final int _TIME_OUT = 10;
     private Retrofit retrofit;
     private APIService service;
 
@@ -38,11 +38,11 @@ public class HttpConnect {
 
     // --------------------------------------------------------
     private HttpConnect() {
-        connectInit();
+        init();
     }
 
     // --------------------------------------------------------
-    private void connectInit() {
+    private void init() {
 
         OkHttpClient client = new OkHttpClient.Builder().build();
         client.newBuilder().connectTimeout(_TIME_OUT, TimeUnit.MINUTES);
@@ -55,11 +55,6 @@ public class HttpConnect {
                 .build();
 
         service = retrofit.create(APIService.class);
-    }
-
-    // --------------------------------------------------------
-    public Retrofit getCline() {
-        return retrofit;
     }
 
     // --------------------------------------------------------
