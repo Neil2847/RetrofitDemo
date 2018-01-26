@@ -1,6 +1,8 @@
 package com.example.neil.rereofitdeom.connect;
 
 import com.example.neil.rereofitdeom.model.Museum;
+import com.example.neil.rereofitdeom.util.MyObserver;
+import com.example.neil.rereofitdeom.util.ObserverOnNextListener;
 
 import io.reactivex.Observable;
 
@@ -23,6 +25,7 @@ public class HttpConnect {
 
     // --------------------------------------------------------
     private final int _TIME_OUT = 10;
+
     private Retrofit retrofit;
     private APIService service;
 
@@ -58,8 +61,8 @@ public class HttpConnect {
     }
 
     // --------------------------------------------------------
-    public void getMuseumList(Observer<Museum> observer) {
-        addObserver(service.loadMuseumList(1, Config.NMTH), observer);
+    public void getMuseumList(ObserverOnNextListener<Museum> listener) {
+        addObserver(service.loadMuseumList(1, Config.NMTH), new MyObserver<Museum>(listener));
     }
 
     // --------------------------------------------------------

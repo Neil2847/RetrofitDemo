@@ -8,6 +8,8 @@ import com.example.neil.rereofitdeom.connect.APIService;
 import com.example.neil.rereofitdeom.connect.Config;
 import com.example.neil.rereofitdeom.connect.HttpConnect;
 import com.example.neil.rereofitdeom.model.Museum;
+import com.example.neil.rereofitdeom.util.MyObserver;
+import com.example.neil.rereofitdeom.util.ObserverOnNextListener;
 import com.orhanobut.logger.Logger;
 
 import java.util.List;
@@ -40,35 +42,11 @@ public class MainActivity extends AppCompatActivity {
 
         listView = findView(R.id.list);
 
-        HttpConnect.getInstance().getMuseumList(new Observer<Museum>() {
-
-            Disposable d;
-
+        HttpConnect.getInstance().getMuseumList(new ObserverOnNextListener<Museum>() {
             @Override
-            public void onSubscribe(Disposable d) {
-                Logger.d("Disposable");
-                this.d = d;
-            }
-
-            @Override
-            public void onNext(Museum value) {
-                Logger.d("onNext");
-
-                adapter = new MuseumAdapter(value.getData());
-                Logger.d(value.getData().size());
+            public void onNext(Museum museum) {
+                adapter = new MuseumAdapter(museum.getData());
                 listView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Logger.d("onError");
-                d.dispose();
-            }
-
-            @Override
-            public void onComplete() {
-                Logger.d("onComplete");
-                d.dispose();
             }
         });
 
