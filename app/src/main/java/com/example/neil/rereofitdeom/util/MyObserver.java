@@ -52,7 +52,10 @@ public class MyObserver<T> implements Observer<T>, ProgressCancelListener {
     // --------------------------------------------------------
     @Override
     public void onCancelProgress() {
-        d.dispose();
+
+        if (!d.isDisposed()) {
+            d.dispose();
+        }
     }
 
     // --------------------------------------------------------

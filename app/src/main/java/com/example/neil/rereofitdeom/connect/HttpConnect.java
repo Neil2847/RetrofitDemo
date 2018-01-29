@@ -1,5 +1,7 @@
 package com.example.neil.rereofitdeom.connect;
 
+import android.content.Context;
+
 import com.example.neil.rereofitdeom.model.Museum;
 import com.example.neil.rereofitdeom.util.MyObserver;
 import com.example.neil.rereofitdeom.util.ObserverOnNextListener;
@@ -61,8 +63,8 @@ public class HttpConnect {
     }
 
     // --------------------------------------------------------
-    public void getMuseumList(ObserverOnNextListener<Museum> listener) {
-        addObserver(service.loadMuseumList(1, Config.NMTH), new MyObserver<Museum>(listener));
+    public void getMuseumList(Context context, ObserverOnNextListener<Museum> listener) {
+        addObserver(service.loadMuseumList(1, Config.NMTH), new MyObserver<Museum>(context, listener));
     }
 
     // --------------------------------------------------------

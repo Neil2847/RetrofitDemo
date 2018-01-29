@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
 
+import com.orhanobut.logger.Logger;
+
 /**
  * Created by neil on 2018/1/26.
  */
@@ -50,7 +52,7 @@ public class ProgressDialogHandler extends Handler {
             }
 
             if (!pd.isShowing()) {
-                pd.isShowing();
+                pd.show();
             }
         }
     }

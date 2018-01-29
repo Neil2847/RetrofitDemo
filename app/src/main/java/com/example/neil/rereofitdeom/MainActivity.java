@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         listView = findView(R.id.list);
 
-        HttpConnect.getInstance().getMuseumList(new ObserverOnNextListener<Museum>() {
+        HttpConnect.getInstance().getMuseumList(this, new ObserverOnNextListener<Museum>() {
             @Override
             public void onNext(Museum museum) {
                 adapter = new MuseumAdapter(museum.getData());
