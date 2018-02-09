@@ -37,8 +37,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HttpConnect {
 
     // --------------------------------------------------------
-    private static final long CACHE_STALE_SEC = 60 * 60 * 24 * 2;
-
+    private static final long ＿CACHE_STALE_SEC = 60 * 60 * 24 * 2;
     private static final int _READ_TIME_OUT = 5;
     private static final int _CONNECT_TIME_OUT = 5;
 
